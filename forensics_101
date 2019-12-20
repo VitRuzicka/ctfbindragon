@@ -1,0 +1,20 @@
+
+Name: Forensics 101		
+-------------------
+Created: Jul 10th 18	
+Points: 30	
+Category: Forensics	
+Difficulty: Easy
+Author: intelagent	
+
+Description: 	
+Think the flag is somewhere in there. Would you help me find it? https://mega.nz/#!OHohCbTa!wbg60PARf4u6E6juuvK9-aDRe_bgEL937VO01EImM7c
+
+
+---------------------------------------------------------------------------------
+Process:
+
+you just open the file with notepad++ or nano or wahtever, that shows you the raw data in text.
+Then you just search with ctrl+f or whatever your combination is and enter flag
+==================================================================================
+Flag:  flag{wow!_data_is_cool}
