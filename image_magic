@@ -1,0 +1,97 @@
+Name: Image Magic
+________________________
+Created: Jul 10th 18
+Points: 70
+Category: 
+Difficulty: Hard
+Author: intelagent
+
+
+Description:
+It looks like someone messed up my picture! Can anyone reorganize the pixels? The python module PIL (Python Imaging Library) might be useful! https://mega.nz/#!OKxByZyT!vaabCJRG5D9zAUp7drTekcA5pszu67r_TbQMtxEzqGE
+
+Update: I think whoever messed up my image took every column of pixels and put them side by side. Update: I think the width of the image was 304 before they messed with it.
+______________________________________________________________________________________
+
+Process:
+
+First you have to find out the dimensions of the picture, you do so by 
+
+$ file out\ copy.jpg
+
+the output looks like this:
+out copy.jpg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, baseline, precision 8, 27968x1, components 3
+
+
+and we can see that the picture is 27968 pixels wide and 1 pixel high, looks strange huh?
+
+From the above description we know that: "...I think the width of the image was 304..." the width is 304 pixels. It could be kinda neat to have the height right?
+So we divide 27968 by 304 and get 92. That's out height. 
+Now we know that the original picture dimensions were 304x92px
+If you read the description carefully, you realize. that the original picture could be stacked many ways into the long noodle
+
+I came up with this theory:
+
+27968 ---->
+   [px]  0                          91      92                  184  185            ...
+         +----------------------------------------------------------------------------+
+                                                                                     x
+                                                               xx  +                xx
+         +                                  +                  x   |                x
+         |                         xx       |                 x    |               xx
+         |                       xxx        |                xx    |               x
+         |                      xx          |               xx     |              xx
+         |                    xx            |              xx      |              x
+         |                   xx             |             xx       |             xx
+         |                  xx              |            xx        |            xx
+92       |                xx                |           xx         |           xx
+         |               xx                 |         xxx          |          xx
+         |             xx                   |        xx            |         xx
+         |            xx                    |       xx             |        xx
+         |           xx                     |      xx              |      xx
+         |          xx                      |     xx               |     xx
+         |        xx                        |    xx                |    xx
+         |      xxx                         |   xx                 |   xx
+         |    xxx                           |   x                  |  xx
+         |  xx                              | xx                   | xx
+         + xx                               + x                    +
+
+         									304
+
+
+I think you get it although it's pretty ugly (will work on that)
+so, you have 304 columns rotated by 90deg to - so rows becomes columns.
+
+Now I just wrote tiny Python script to make things easier.
+There you go:
+
+_______________________________________________________________________________
+from PIL import Image
+in = Image.open("out copy.jpg") #the file we got from mega
+out = Image.new('RGB', (304,92)) #these are the dimensions we calculated
+pix_in = in.load()
+pix_out = out.load()
+
+for x in range(304):                       #for every column
+	for y in range(92):                    #for every pixel in that every column
+		pix_out[x,y] = pix_in[(x*92)+y, 0] #the first part is pretty obvious
+		print(x, y)                        #just to see some output (:
+out.save("pctr.jpg")					   #and we save it
+_________________________________________________________________________________
+
+now you just view the generated picture by:
+$ eog pctr.jpg
+
+or 
+
+$ display pctr.jpg
+
+or whatever heck the viewer you are using
+
+TIPS:
+you get pil by 
+pip install Pillow
+
+the pictures and the code must be in the same directory
+now what you all cheaters are waiting for:
+flag{cool_right?}
