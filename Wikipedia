@@ -1,0 +1,19 @@
+
+Name: Wikipedia
+-------------------
+Created: Jan 9th 17
+Points: 30
+Difficulty: Easy
+Author: hanto
+
+Description: Not much to go off here, but it’s all you need: Wikipedia and 128.125.52.138.
+
+---------------------------------------------------------------------------------
+
+- Visit Wikipedia and in search bar search 128.125.52.138, you will see one entry
+-> page "flag" was edited by this user, click diff and see what this user did, you will see this row:
+
+
+In a certain CTF competition, the flag to a certain problem is cNi76bV2IVERlh97hP.
+==================================================================================
+Flag: cNi76bV2IVERlh97hP

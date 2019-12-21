@@ -1,0 +1,36 @@
+
+Name: 		Binwalk 
+-------------------
+Created: 	Mar 14th 17
+Points: 	30
+Category: 	forensic
+Difficulty: 	Easy 
+Author: 	alexkato29
+
+Description: 	Here is a file with another file hidden inside it. Can you extract it? https://mega.nz/#!qbpUTYiK!-deNdQJxsQS8bTSMxeUOtpEclCI-zpK7tbJiKV0tXYY
+
+---------------------------------------------------------------------------------
+
+SOLUTION 1:
+- Open downloaded file in textEditor (used Notepad [Windows]) and search for:
+	- HEX: 49 48 44 52
+	- ASCII: IHDR
+
+-> There is two of those, that means tha there are two images. Simply just delete everything between first IHDR and stop before second IHDR
+-> Just open image and set your flag.
+
+-----------------
+SOLUTION 2:
+- With command FILE we get the information that PurpleThing.jpeg is Actualy an PNG file
+- So rename it to PurpleThing.png
+
+- Using pngcheck we get:
+PurpleThing.png  additional data after IEND chunk
+ERROR: PurpleThing.png
+
+-> extract using foremost in two files - foremost PurpleThing.png -v
+
+--> View the Flag
+
+==================================================================================
+Flag: ABCTF{b1nw4lk_is:us3ful} 
