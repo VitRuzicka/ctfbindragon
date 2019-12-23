@@ -1,0 +1,16 @@
+
+Name:	Taking LS
+-------------------
+Created:	Oct 18th 17
+Points:		30
+Category:	Forensics
+Difficulty:	Easy
+Author:		alexkato29
+
+Description:	Just take the Ls. Check out this zip file and I be the flag will remain hidden. https://mega.nz/#!mCgBjZgB!_FtmAm8s_mpsHr7KWv8GYUzhbThNn0I8cHMBi4fJQp8
+
+---------------------------------------------------------------------------------
+You'll download a zip file. Unzip it view hidden folder containing key: Im The Flag, Use the key to open pdf file.
+
+=================================================================================
+Flag:		ABCTF{T3Rm1n4l_is1_C00l}
