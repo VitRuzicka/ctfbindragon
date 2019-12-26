@@ -1,0 +1,38 @@
+
+Name: Exclusive Santa		
+-------------------
+Created: Dec 4th 19	
+Points: 60
+Category: Forensics	
+Difficulty: Medium	 
+Author: EdbR	
+
+Description: 	
+Dear Santa,
+Hey! There are so many toys that I want, but I just don't have the money. I don't care which toy I get as long as it's one or the other, but not both!
+
+- CTFlearn
+Exclusive_Santa.rar
+---------------------------------------------------------------------------------
+Process:
+
+So, this one was nice themed, it really pleased me. Clever one.
+You download archive, extract it and see 2 pictures: 1.png and 2.png
+The first looks messed up and second is symbol for XOR.
+Now you need to extract the third picture contained in 3.png by:\
+$ foremost 3.png 
+and you can see the result in output/png dir.
+or you can do it the "IHDR delete way" described earlier in our repo
+
+
+Now you can see the picture from GoT, which looks kinda similar to 1.png. Lets subtract them.
+we use imagemagick. Make sure you have it installed.
+
+$ convert 1.png got.png -fx "(((255*u)&(255*(1-v)))|((255*(1-u))&(255*v)))/255" 2.jpg
+
+with 1.png being the weird picture and got.png the one extracted from 3.png
+and you just mirror result.png with e.g. gimp
+and there you go
+==================================================================================
+Flag:  
+CTFlearn{Santa_1s_C0ming}
